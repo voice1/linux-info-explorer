@@ -3024,6 +3024,12 @@ function asterisk_info
     if [ -x $DAHDI_HARDWARE ] ; then
         $DAHDI_HARDWARE  > ${ASTERISKDIR}/dahdi_hardware.txt		2>&1
     fi
+    
+    # Gather TFTP data if present
+    if [ -d /tftpboot ] ; then
+    	MakeDir(${ASTERISKDIR}/tftpboot)
+    	cp -r /tftpboot/* ${ASTERISKDIR}/tftpboot/. 2>&1
+    fi
 }
 
 ##############################################################################
